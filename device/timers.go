@@ -129,7 +129,7 @@ func expiredNewHandshake(peer *Peer) {
 		peer.endpoint.ClearSrc()
 	}
 	peer.Unlock()
-	peer.SendHandshakeInitiation(false)
+	peer.SendHandshakeInitiation(true)
 }
 
 func expiredZeroKeyMaterial(peer *Peer) {
