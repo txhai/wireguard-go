@@ -121,6 +121,7 @@ func (device *Device) IpcGetOperation(w io.Writer) error {
 				sendf("tx_bytes=%d", atomic.LoadUint64(&peer.stats.txBytes))
 				sendf("rx_bytes=%d", atomic.LoadUint64(&peer.stats.rxBytes))
 				sendf("persistent_keepalive_interval=%d", atomic.LoadUint32(&peer.persistentKeepaliveInterval))
+				sendf("handshake_attempts=%d", atomic.LoadUint32(&peer.timers.handshakeAttempts))
 
 				device.allowedips.EntriesForPeer(peer, func(prefix netip.Prefix) bool {
 					sendf("allowed_ip=%s", prefix.String())

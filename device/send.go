@@ -195,7 +195,7 @@ func (peer *Peer) keepKeyFreshSending() {
 	}
 	nonce := atomic.LoadUint64(&keypair.sendNonce)
 	if nonce > RekeyAfterMessages || (keypair.isInitiator && time.Since(keypair.created) > RekeyAfterTime) {
-		peer.SendHandshakeInitiation(false)
+		peer.SendHandshakeInitiation(true)
 	}
 }
 
